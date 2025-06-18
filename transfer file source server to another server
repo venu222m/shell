@@ -1,0 +1,25 @@
+11. can u please write logic in shell or ansible if another server pinging fine we can transfer file source server to another server 
+and if server not ping we cant transfer
+#!/bin/bash
+
+# Variables
+DEST_SERVER="172.31.86.20"
+SOURCE_FILE="/path/to/source/file.txt"
+DEST_PATH="/path/to/destination/directory/"
+
+echo "Pinging destination server $DEST_SERVER..."
+ping -c 2 $DEST_SERVER > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+    echo "Server $DEST_SERVER is reachable. Transferring file..."
+    
+    scp $SOURCE_FILE $DEST_SERVER:$DEST_PATH
+    
+    if [ $? -eq 0 ]; then
+        echo "File transfer successful."
+    else
+        echo "File transfer failed during SCP."
+    fi
+else
+    echo "Server $DEST_SERVER is NOT reachable. File transfer skipped."
+fi
