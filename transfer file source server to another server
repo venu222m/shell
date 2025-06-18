@@ -1,5 +1,9 @@
 11. can u please write logic in shell or ansible if another server pinging fine we can transfer file source server to another server 
 and if server not ping we cant transfer
+step1: ping destination server ip from source server
+step2:ssh Set up SSH key authentication
+copy /root/.ssh/id_rsa.pub in source server
+paste /root/.ssh/authorized_keys in destination server
 #!/bin/bash
 
 # Variables
