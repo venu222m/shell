@@ -11,6 +11,9 @@ Line 7: head command test
 Line 8: tail command test
 Line 9: grep command test
 awk filer command
+awk is a command-line tool for pattern scanning and processing.
+
+It reads input line-by-line, splits it into fields, applies actions
 
 [root@ip-192-168-2-16 ~]# awk 'NR>=5 && NR<=7 {print}' file
 Line 5: less command test
@@ -109,3 +112,7 @@ head
 tail
 grep
 End
+tee:
+Fetching pod logs and saving for later analysis:
+kubectl logs mypod | tee pod-logs.txt
+
