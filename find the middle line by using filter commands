@@ -1,0 +1,111 @@
+10.how to find middle line in file in linux?(infosys interview)
+
+root@ip-192-168-2-16 ~]# cat file
+Line 1: Welcome to Linux
+Line 2: This is a test file
+Line 3: Learning shell commands
+Line 4: cat command test
+Line 5: less command test
+Line 6: more command test
+Line 7: head command test
+Line 8: tail command test
+Line 9: grep command test
+awk filer command
+
+[root@ip-192-168-2-16 ~]# awk 'NR>=5 && NR<=7 {print}' file
+Line 5: less command test
+Line 6: more command test
+Line 7: head command test
+
+sed filter
+[root@ip-192-168-2-16 ~]# sed -n '5,7p' file
+Line 5: less command test
+Line 6: more command test
+Line 7: head command test
+
+other exmaples:
+[root@ip-192-168-2-16 ~]# sed 's/less/demo/' file
+Line 1: Welcome to Linux
+
+cut exaples:
+[root@ip-192-168-2-16 ~]# echo "name:venu:admin" | cut -d ':' -f 2
+venu
+[root@ip-192-168-2-16 ~]# echo "name:venu:admin" | cut -d ':' -f 3
+admin
+[root@ip-192-168-2-16 ~]# echo "name:venu:admin" | cut -d ':' -f 1
+name
+[root@ip-192-168-2-16 ~]# cat file | cut -d ':' -f 2
+ Welcome to Linux
+ This is a test file
+ Learning shell commands
+ cat command test
+ less command test
+ more command test
+ head command test
+ tail command test
+ grep command test
+ End of file
+[root@ip-192-168-2-16 ~]# cat file | cut -d ':' -f 1
+Line 1
+Line 2
+Line 3
+Line 4
+Line 5
+Line 6
+Line 7
+Line 8
+Line 9
+Line 10
+Line 2: This is a test file
+Line 3: Learning shell commands
+Line 4: cat command test
+Line 5: demo command test
+Line 6: more command test
+Line 7: head command test
+Line 8: tail command test
+Line 9: grep command test
+
+[root@ip-192-168-2-16 ~]# awk '{print $2}' file
+1:
+2:
+3:
+4:
+5:
+6:
+7:
+8:
+9:
+10:
+[root@ip-192-168-2-16 ~]# awk '{print $1}' file
+Line
+Line
+Line
+Line
+Line
+Line
+Line
+Line
+Line
+Line
+[root@ip-192-168-2-16 ~]# awk '{print $4}' file
+to
+is
+shell
+command
+command
+command
+command
+command
+command
+of
+[root@ip-192-168-2-16 ~]# awk '{print $3}' file
+Welcome
+This
+Learning
+cat
+less
+more
+head
+tail
+grep
+End
